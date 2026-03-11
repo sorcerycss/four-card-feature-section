@@ -1,0 +1,58 @@
+/* custom properties
+====================*/
+
+:root {
+    --spacer: 1rem;
+
+    --clr-accent-red: hsl(0, 78%, 62%);
+    --clr-accent-orange: hsl(34, 97%, 64%);
+    --clr-accent-cyan: hsl(180, 62%, 55%);
+    --clr-accent-blue: hsl(212, 86%, 64%);
+
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-400: hsl(212, 6%, 44%);
+    --clr-neutral-500: hsl(234, 12%, 34%);
+
+    --ff: "Poppins", sans-serif;
+
+    --fs: 15px;
+
+    --fw-200: 200;
+    --fw-400: 400;
+    --fw-600: 600;
+
+    --box-shadow: 0 0.25em 1.5em rgba(0, 0, 0, 0.15);
+}
+
+/* reset
+=========*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+/* img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+} */
+
+/* general styling
+================= */
+
+body {
+    font-family: var(--ff);
+    font-size: var(--fs);
+    font-weight: var(--fw-400);
+    /* line-height: 1; */
+    color: var(--clr-neutral-400);
+    margin: 0;
+}
