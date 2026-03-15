@@ -39,11 +39,11 @@ p {
     margin: 0;
 }
 
-/* img {
+img {
+    display: block;
     max-width: 100%;
     height: auto;
-    display: block;
-} */
+}
 
 /* general styling
 ================= */
@@ -52,20 +52,49 @@ body {
     font-family: var(--ff);
     font-size: var(--fs);
     font-weight: var(--fw-400);
-    /* line-height: 1; */
+    line-height: 1;
     color: var(--clr-neutral-400);
     margin: 0;
 }
 
 .container {
-    max-width: 70rem;
+    max-width: 25rem;
     margin: 0 auto;
-    padding: 0 var(--spacer);
+    padding: 0 var(--spacer) 3em;
 }
 
-.cards {}
+.hero {
+    text-align: center;
+    padding: 3.5rem 0;
+}
+
+.hero__title {
+    font-size: 1.5rem;
+    color: var(--clr-neutral-500);
+    line-height: 1.5;
+}
+
+.hero__title span {
+    font-weight: var(--fw-200);
+}
+
+.hero__text {
+    max-width: 18.75rem;
+    margin: 0 auto;
+}
+
+.cards {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
 
 .card {
+    max-width: 25rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
     position: relative;
     box-shadow: var(--box-shadow);
     background: var(--bg, var(--clr-neutral-100));
@@ -76,17 +105,38 @@ body {
     border-bottom-right-radius: 6px;
 }
 
+.card__title {
+    color: var(--clr-neutral-500);
+}
+
+.card img {
+    align-self: flex-end;
+}
+
 /* utility calasses */
 .flow-content>*+* {
-    margin-top: var(--flow-space, var(--spacer));
+    margin-top: var(--flow-top, var(--spacer));
+    margin-bottom: var(--flow-bottom, 0);
 }
+
+.flow-content--large {
+    --flow-top: 2rem;
+    --flow-bottom: 2rem;
+}
+
+/* .split>*+* {
+    margin: calc(var(--spacer) * 3) 0 0 0;
+} */
 
 /* individual cards */
 .cards .card::before {
     content: "";
-    display: block;
+    /* display: block;  */
+    /* Either display block or position absolute? */
     width: 100%;
     height: 0.8rem;
+    top: 0;
+    left: 0;
     background: var(--bg-bar, var(--clr-accent-cyan));
     border-radius: 5px;
     position: absolute;
@@ -104,4 +154,72 @@ body {
 
 .cards .card.calculator::before {
     --bg-bar: var(--clr-accent-blue);
+}
+
+.cards>*:not(:first-child) {
+    margin-top: 2rem;
+}
+
+/* media quaries */
+
+@media (min-width: 768px) {
+
+    body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        max-width: 70rem;
+    }
+
+    .hero {
+        padding: 2em 0;
+    }
+
+    .hero__title {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .hero__text {
+        max-width: 500px;
+    }
+
+    .cards>*:not(:first-child) {
+        margin-top: 0;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "hero hero hero"
+            "supervision team-builder calculator"
+            "supervision karma calculator";
+        gap: calc(var(--spacer) * 2);
+    }
+
+    .hero {
+        grid-area: hero;
+    }
+
+    .supervision {
+        grid-area: supervision;
+        align-self: center;
+    }
+
+    .team-builder {
+        grid-area: team-builder;
+    }
+
+    .calculator {
+        grid-area: calculator;
+        align-self: center;
+    }
+
+    .karma {
+        grid-area: karma;
+    }
 }
